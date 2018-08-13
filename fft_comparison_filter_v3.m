@@ -16,6 +16,13 @@ pulse_length=(150/1000)*Fs; %(need more time since noise is above threshold in c
 threshold=.75/1000;     %ideally it should be 1mV but to exclude reflections 2.5mV makes more sense
 threshold_back_samples=0;
 
+    %variables and matrix to extract and plot speeds or freq. shifts.
+N_SETS=time_experiment/2;   %this two is delay or function generator timer's value!!!
+fc_pulse_fg=69006.5;
+c=1500;
+speed_time_matrix=zeros(N_SETS,2);  %(speed avg_time) format 
+
+
 samples=Fs;
 freq_set=((-samples/2):1:(samples/2)-1)*(Fs/samples);
 
@@ -24,8 +31,6 @@ pulses_with_valid_freq=0;
 last_index=(-300*Fs/1000);  %in order to avoid missing first pulse
 data_extracted=zeros(samples,1);
 single_pulse=zeros(samples,1);
-%fft_set=zeros(samples,1,no_of_sets);
-%fft_temp=zeros(samples,1);
     %raw data plot
 mean_value=mean(data);
 data=data-mean_value;
@@ -48,10 +53,13 @@ index=1;
     while( index < max_index)
         index=index+1;
         if dataFilt(index) > (threshold)   
+            %%
             lower_limit=index-threshold_back_samples;
             if(lower_limit<0)
+                %%
                index=index+3*pulse_length;
             else
+                %%
                 total_number_of_pulses=total_number_of_pulses+1;
                 upper_limit=lower_limit+(3*pulse_length)-1;
                 if upper_limit > max_index
@@ -61,11 +69,14 @@ index=1;
                 single_pulse(:,1)=data_extracted(:,1);
                 [fft_temp,temp_f_peak]=fft_pulse(single_pulse,samples,freq_set);
                 if temp_f_peak > 66500
+                    %%
                     if((index-last_index)/Fs>((800/1000)))
                     %%
                         pulses_with_valid_freq=pulses_with_valid_freq+1;
                         %fft_set=fft_temp(samples,1,pulses_with_valid_freq);
                         extracted_peak(pulses_with_valid_freq,1)=temp_f_peak;
+                        speed_time_matrix(pulses_with_valid_freq,1)=((temp_f_peak-fc_pulse_fg)*c*(1/fc_pulse_fg));     %speed value
+                        speed_time_matrix(pulses_with_valid_freq,2)=(lower_limit+upper_limit)/(2*Fs);                  %average time of pulse/speed
                             %plot only valid pulses, this will help in next
                             %version of program/algo
                         time_for_one_pulse=0:1/Fs:1;
@@ -75,9 +86,11 @@ index=1;
                         last_index=index;       %used for rejections of echos....
                         index=index+3*pulse_length;
                     else
+                        %%
                         index=index+3*pulse_length; %in case of echo
                     end
                 else
+                    %%
                     index=index+(1/1000)*Fs;        %1msec in case of invalid pulse
                 end
             end
@@ -96,10 +109,12 @@ index=1;
     ylabel('No. of instances');
     title('69KHz fixed freq. tag');
     [Freqs,occurances,ic]=unique(sort(extracted_peak));
-    Freqs
-    occurances
+    Freqs;
+    occurances;
     mean_peak_freq=mean(extracted_peak)
     sd_freq=std(extracted_peak)
+    figure
+    stem(speed_time_matrix(:,2),speed_time_matrix(:,1),'*');
 end
 
 
