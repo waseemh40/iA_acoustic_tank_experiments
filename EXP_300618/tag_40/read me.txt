@@ -1,0 +1,5 @@
+
+before 70_10 @1230, hydrophone was away from corner/wall but after and includig 1230, it was close to wall!
+
+1242 -> point of change from 70 to 90
+1254 -> changed orientation of tag

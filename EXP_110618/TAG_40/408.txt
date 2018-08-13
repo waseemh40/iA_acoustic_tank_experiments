@@ -1,0 +1,27 @@
+For 100000 til 102700
+
+Set point=	408	milli_second time=	725216	Direction=1
+Set point=	408	milli_second time=	605301	Direction=0
+Set point=	408	milli_second time=	801366	Direction=1
+Set point=	408	milli_second time=	654251	Direction=0
+Set point=	408	milli_second time=	886578	Direction=1
+Set point=	408	milli_second time=	695952	Direction=0
+Set point=	408	milli_second time=	980852	Direction=1
+Set point=	408	milli_second time=	734282	Direction=0
+Set point=	408	milli_second time=	1044305	Direction=1
+Set point=	408	milli_second time=	744127	Direction=0
+Set point=	408	milli_second time=	1076942	Direction=1
+Set point=	408	milli_second time=	753967	Direction=0
+Set point=	408	milli_second time=	1109055	Direction=1
+Set point=	408	milli_second time=	762773	Direction=0
+Set point=	408	milli_second time=	1160858	Direction=1
+Set point=	408	milli_second time=	782716	Direction=0
+Set point=	408	milli_second time=	1212140	Direction=1
+Set point=	408	milli_second time=	777537	Direction=0
+Set point=	408	milli_second time=	1291135	Direction=1
+Set point=	408	milli_second time=	793596	Direction=0
+Set point=	408	milli_second time=	1310302	Direction=1
+Set point=	408	milli_second time=	797997	Direction=0
+		***Debug mode: Init set point=	408***
+
+

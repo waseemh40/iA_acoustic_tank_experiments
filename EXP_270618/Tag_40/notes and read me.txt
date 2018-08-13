@@ -1,0 +1,2 @@
+Transmitter started at 7:24. This is first day after holidays in spain :-)
+Data is more stable after 10:27 since starting transmitter is transient!

@@ -1,0 +1,5 @@
+1. Changed depth of hydrophone at 1223 Hrs
+2. Function generator set for 2560 pulses NOT 10 msec. 2560 means 37.5 msec!!!
+3. Vpp set to 200mV
+4. Freq set to 69000 KHz
+5. Both Tx and Rx were at depht of 50 cm or more
